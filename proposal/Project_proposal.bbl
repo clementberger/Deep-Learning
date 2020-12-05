@@ -1,0 +1,48 @@
+\begin{thebibliography}{1}\itemsep=-1pt
+
+\bibitem{squelette_progr}
+Amir Anhari.
+\newblock Learning multi-instrument classification with partial labels.
+\newblock 01 2020.
+
+\bibitem{features_descr}
+Arindam Dutta, Dibakar Sil, Aniruddha Chandra, and Sarbani Palit.
+\newblock Cnn based musical instrument identification using time‐frequency
+  localized features.
+\newblock pages 1--6, 05 2020.
+
+\bibitem{attention}
+Siddharth Gururani, Mohit Sharma, and Alexander Lerch.
+\newblock An attention mechanism for musical instrument recognition.
+\newblock {\em CoRR}, abs/1907.04294, 2019.
+
+\bibitem{VGGish_net}
+S. {Hershey}, S. {Chaudhuri}, D.~P.~W. {Ellis}, J.~F. {Gemmeke}, A. {Jansen},
+  R.~C. {Moore}, M. {Plakal}, D. {Platt}, R.~A. {Saurous}, B. {Seybold}, M.
+  {Slaney}, R.~J. {Weiss}, and K. {Wilson}.
+\newblock Cnn architectures for large-scale audio classification.
+\newblock In {\em 2017 IEEE International Conference on Acoustics, Speech and
+  Signal Processing (ICASSP)}, pages 131--135, 2017.
+
+\bibitem{MIC}
+Eric~J. Humphrey, S. Durand, and B. McFee.
+\newblock Openmic-2018: An open data-set for multiple instrument recognition.
+\newblock In {\em ISMIR}, 2018.
+
+\bibitem{metric}
+A. Mesaros, Toni Heittola, and T. Virtanen.
+\newblock Metrics for polyphonic sound event detection.
+\newblock {\em Applied Sciences}, 6:162, 2016.
+
+\bibitem{data_aug}
+Jan Schlüter and Thomas Grill.
+\newblock Exploring data augmentation for improved singing voice detection with
+  neural networks.
+\newblock 01 2015.
+
+\bibitem{MusicNet}
+John Thickstun, Z. Harchaoui, and Sham~M. Kakade.
+\newblock Learning features of music from scratch.
+\newblock {\em ArXiv}, abs/1611.09827, 2017.
+
+\end{thebibliography}
