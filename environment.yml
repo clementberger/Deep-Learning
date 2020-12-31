@@ -1,0 +1,11 @@
+name : dlproj
+dependencies :
+  - python = 3.6
+  - numpy
+  - pip
+  - pip :
+    - resampy
+    - tf_slim
+    - six
+    - soundfile
+    - tensorflow == 1.14.0
