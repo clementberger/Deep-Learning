@@ -1,6 +1,7 @@
 name : dlproj
 dependencies :
   - python = 3.6
+  - pytorch
   - numpy
   - pip
   - pip :
