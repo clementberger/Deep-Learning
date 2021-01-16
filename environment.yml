@@ -9,3 +9,5 @@ dependencies :
     - six
     - soundfile
     - tensorflow == 1.14.0
+    - tensorboardX
+    - tqdm
