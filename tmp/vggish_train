@@ -168,7 +168,15 @@ def main(_):
     features_input = sess.graph.get_tensor_by_name(
         vggish_params.INPUT_TENSOR_NAME)
     for _ in range(FLAGS.num_batches):
-      (features, labels) = _get_examples_batch()
+      #(features, labels) = _get_examples_batch()  REPLACE BY OUR DATASET FEATURES/LABELS @clementberger
+clementberger BiLSTM avec attention
+Latest commit cd85ba4 6 hours ago
+History
+1 contributor
+175 lines (130 sloc) 5.01 KB
+import math
+import numpy as np
+
       [num_steps, loss_value, _] = sess.run(
           [global_step, loss, train_op],
           feed_dict={features_input: features, labels_input: labels})
