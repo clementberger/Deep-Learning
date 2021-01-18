@@ -6,6 +6,12 @@ To use our code, it is strongly advised to create a dedicated environment with
 ```
 conda env create -f environment.yml
 ```
+
+The attention mechanism yelds some warnings, we advise you to call the code as follows :
+```
+python -W ignore code.py
+```
+
 # Acknowlegment
 We used the OpenMIC dataset, from which we also took some code (especially the VGGish part)
 https://github.com/cosmir/openmic-2018
