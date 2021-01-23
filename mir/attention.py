@@ -56,6 +56,8 @@ class CNN_BiLSTM_Attention(nn.Module):
     def forward(self, x):
         """ CNN
         """
+        x = x.transpose(1,3)
+        x = x.transpose(2,3)
         x = F.max_pool2d(F.relu(self.conv1(x)), 2)
         x = F.max_pool2d(F.relu(self.conv2(x)), 2)
         x = F.max_pool2d(F.relu(self.conv3(x)), 2)
