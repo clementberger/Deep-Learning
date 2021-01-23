@@ -63,6 +63,17 @@ def discriminative_trainer(model, data_loader, optimizer, criterion, inst=None):
         X = cuda(X)
         Y_true = Y_true.cuda()
         Y_mask = Y_mask.cuda()
+        interpolation = True
+        if interpolation :
+            batch_size = X.size[0]
+            indices = np.random.choice(batch_size, size = batch_size//10)
+            for i in indices :
+                a, b = np.random.beta(0.2,0.2,size=2)
+                a /= a+b
+                b /= a+b
+                X[i] = a*X[i]+b*X[i-1]
+                Y_true[i] = a*Y_true[i]+b*Y_true[i]
+                Y_mask[i] = a*Y_mask[i]+b*Y_mask[i]
         if inst is not None:
             Y_true = Y_true[:,inst].view(-1,1)
             Y_mask = Y_mask[:,inst].view(-1,1)
