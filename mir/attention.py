@@ -41,3 +41,42 @@ class BiLSTM_Attention(nn.Module):
         
         x = F.hardtanh(x, 0., 1.)
         return x
+
+class CNN_BiLSTM_Attention(nn.Module):
+    def __init__(self):
+        super(CNN_BiLSTM_Attention, self).__init__()
+        
+        self.conv1 = nn.Conv2d(3, 8, kernel_size = 3)
+        self.conv2 = nn.Conv2d(8, 16, kernel_size = 3)
+        self.conv3 = nn.Conv2d(32, 32, kernel_size = 3)
+        self.conv4 = nn.Conv2d(32, 32, kernel_size = 3)
+        self.att = nn.Conv2d(32*6*6, 20, kernel_size = 1)
+        self.bilstm = nn.LSTM(32*6*6, 20, batch_first = True, bidirectional = True)
+        
+    def forward(self, x):
+        """ CNN
+        """
+        x = F.max_pool2d(F.relu(self.conv1(x)), 2)
+        x = F.max_pool2d(F.relu(self.conv2(x)), 2)
+        x = F.max_pool2d(F.relu(self.conv3(x)), 2)
+        x = F.max_pool2d(F.relu(self.conv4(x)), 2)
+        a, b, c, d = x.size()
+        x = F.dropout(x.view(a, b, c*d))
+        
+        """attention
+        """
+        att = torch.sigmoid(self.att(x[:,:,:,None].contiguous()))
+        eps = 1e-7
+        att = torch.clamp(att, eps, 1 - eps)
+        norm_att = att / torch.sum(att, dim=2)[:, :, None]
+        """BiLSTM
+        """
+        bil, (_,_) = self.bilstm(x)
+        a, b, c = bil.size()
+        bil = bil.view(a, b, 2, c//2)
+        bil = (bil[:,:,0,:] + bil[:,:,1,:]) / 2
+        """combining for output
+        """
+        x = torch.sum(norm_att * bil, dim = 2)
+        x = F.hardtanh(x, 0., 1.)
+        return x
