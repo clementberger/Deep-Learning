@@ -120,6 +120,9 @@ for seed in seeds:
                 best_f1_score_m = avg_f1_macro.mean()
                 best_models[2] = deepcopy(model)
 
+            print("#########################################################################################")
+            print(epoch)
+            print("#########################################################################################")
             # Anneal LR
             # scheduler.step()
     except KeyboardInterrupt:
