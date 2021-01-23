@@ -48,7 +48,7 @@ class CNN_BiLSTM_Attention(nn.Module):
         
         self.conv1 = nn.Conv2d(3, 8, kernel_size = 3)
         self.conv2 = nn.Conv2d(8, 16, kernel_size = 3)
-        self.conv3 = nn.Conv2d(32, 32, kernel_size = 3)
+        self.conv3 = nn.Conv2d(16, 32, kernel_size = 3)
         self.conv4 = nn.Conv2d(32, 32, kernel_size = 3)
         self.att = nn.Conv2d(32*6*6, 20, kernel_size = 1)
         self.bilstm = nn.LSTM(32*6*6, 20, batch_first = True, bidirectional = True)
