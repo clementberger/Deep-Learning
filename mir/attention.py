@@ -62,6 +62,8 @@ class CNN_BiLSTM_Attention(nn.Module):
         x = F.max_pool2d(F.relu(self.conv2(x)), 2)
         x = F.max_pool2d(F.relu(self.conv3(x)), 2)
         x = F.max_pool2d(F.relu(self.conv4(x)), 2)
+        x = x.transpose(2,3)
+        x = x.transpose(1,3)
         a, b, c, d = x.size()
         x = F.dropout(x.view(a, b, c*d))
         
@@ -73,7 +75,7 @@ class CNN_BiLSTM_Attention(nn.Module):
         norm_att = att / torch.sum(att, dim=2)[:, :, None]
         """BiLSTM
         """
-        bil, (_,_) = self.bilstm(x)
+        bil, (_,_) = self.bilstm(x.transpose(1,2))
         a, b, c = bil.size()
         bil = bil.view(a, b, 2, c//2)
         bil = (bil[:,:,0,:] + bil[:,:,1,:]) / 2
