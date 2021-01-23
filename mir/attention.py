@@ -12,7 +12,7 @@ class BiLSTM_Attention(nn.Module):
                 1, 1), padding=(
                 0, 0), bias=True)
         
-        self.bilstm = nn.LSTM(128, 20, batch_first = True, bidirectional = True)
+        self.bilstm = nn.LSTM(128, 20, num_layers = 3, dropout = 0.2, batch_first = True, bidirectional = True)
 
     def forward(self, x):
         """input: (samples_num, freq_bins, time_steps, 1)
