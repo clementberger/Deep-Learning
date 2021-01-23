@@ -70,6 +70,7 @@ class CNN_BiLSTM_Attention(nn.Module):
         """attention
         """
         att = torch.sigmoid(self.att(x.transpose(1,2)[:,:,:,None].contiguous()))
+        att = att[:, :, :, 0]
         eps = 1e-7
         att = torch.clamp(att, eps, 1 - eps)
         norm_att = att / torch.sum(att, dim=2)[:, :, None]
