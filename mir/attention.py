@@ -69,13 +69,13 @@ class CNN_BiLSTM_Attention(nn.Module):
         
         """attention
         """
-        att = torch.sigmoid(self.att(x[:,:,:,None].contiguous()))
+        att = torch.sigmoid(self.att(x.transpose(1,2)[:,:,:,None].contiguous()))
         eps = 1e-7
         att = torch.clamp(att, eps, 1 - eps)
         norm_att = att / torch.sum(att, dim=2)[:, :, None]
         """BiLSTM
         """
-        bil, (_,_) = self.bilstm(x.transpose(1,2))
+        bil, (_,_) = self.bilstm(x)
         a, b, c = bil.size()
         bil = bil.view(a, b, 2, c//2)
         bil = (bil[:,:,0,:] + bil[:,:,1,:]) / 2
