@@ -67,7 +67,8 @@ for seed in seeds:
     #-------------------#
     # Model Definition  #
     #-------------------#
-    model = BiLSTM_Attention()
+    #model = BiLSTM_Attention()
+    model = CNN_BiLSTM_Attention()
     model = model.cuda()
 
     optimizer = torch.optim.Adam(
