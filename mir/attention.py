@@ -79,6 +79,7 @@ class CNN_BiLSTM_Attention(nn.Module):
         a, b, c = bil.size()
         bil = bil.view(a, b, 2, c//2)
         bil = (bil[:,:,0,:] + bil[:,:,1,:]) / 2
+        bil = bil.tanspose(1,2)
         """combining for output
         """
         x = torch.sum(norm_att * bil, dim = 2)
