@@ -65,7 +65,7 @@ def discriminative_trainer(model, data_loader, optimizer, criterion, inst=None):
         Y_mask = Y_mask.cuda()
         interpolation = True
         if interpolation :
-            batch_size = X.size[0]
+            batch_size = X.size()[0]
             indices = np.random.choice(batch_size, size = batch_size//10)
             for i in indices :
                 a, b = np.random.beta(0.2,0.2,size=2)
