@@ -26,21 +26,17 @@ parser.add_argument('--gamma', type=float, default=-1.,
 parser.add_argument('--anneal_factor', type=float, default=0.5,
         help='Annealing Factor used for learning rate scheduler.')
 parser.add_argument('--patience', type=int, default=3,
-        help='Pateince used for learning rate scheduler.')
+        help='Patience used for learning rate scheduler.')
 parser.add_argument('--lr', type=float, default=0.0005,
         help='Learning rate for the optimizer.')
 parser.add_argument('--wd', type=float, default=1e-5,
         help="Weight decay for the network parameters")
 
 # Model related hyperparameters
-parser.add_argument('--model_type', default='attention',
+parser.add_argument('--model_type', default='bilstm',
         help='Which type of model to train')
-parser.add_argument('--emb_layers', type=int, default=3,
-        help='Number of embedding layers')
-parser.add_argument('--hidden_size', type=int, default=128,
-        help='Hidden size for embedding layers')
-parser.add_argument('--dropout_rate', type=float, default=0.5,
-        help='probability of zeroing out a hidden node')
+parser.add_argument('--num_layers', type=int, default=1,
+        help='number of BiLSTM layers')
 
 # Data related hyperparameters
 parser.add_argument('--train', default='./data/train.npz',

@@ -67,8 +67,13 @@ for seed in seeds:
     #-------------------#
     # Model Definition  #
     #-------------------#
-    model = BiLSTM_Attention()
-    #model = CNN_reduit_BiLSTM_Attention()
+    num_layers = args.num_layers
+    if args.model_type == 'bilstm':
+    	model = BiLSTM_Attention(num_layers = num_layers)
+    elif args.model_type == 'CNN' :
+    	model = CNN_BiLSTM_Attention(num_layers = num_layers)
+    elif args.model_type == 'CNN_reduit' :
+    	model = CNN_reduit_BiLSTM_Attention(num_layers = num_layers)
     model = model.cuda()
 
     optimizer = torch.optim.Adam(

@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class BiLSTM_Attention(nn.Module):
-    def __init__(self):
+    def __init__(self, num_layers):
         super(BiLSTM_Attention, self).__init__()
 
         self.att = nn.Conv2d(
@@ -12,7 +12,7 @@ class BiLSTM_Attention(nn.Module):
                 1, 1), padding=(
                 0, 0), bias=True)
         
-        self.bilstm = nn.LSTM(128, 20, batch_first = True, bidirectional = True)
+        self.bilstm = nn.LSTM(128, 20, batch_first = True, bidirectional = True, num_layers = num_layers, dropout = 0.2)
 
     def forward(self, x):
         """input: (samples_num, freq_bins, time_steps, 1)
