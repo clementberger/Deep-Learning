@@ -64,7 +64,7 @@ def discriminative_trainer(model, data_loader, optimizer, criterion, inst=None, 
             batch_size = X.size()[0]
             indices = np.random.choice(batch_size, size = batch_size//10)
             bruit = np.random.normal(scale = noise, size = X[indices].size())
-            X[indices] = X[indices] + float(bruit)
+            X[indices] = X[indices] + bruit
         X = cuda(X)
         Y_true = Y_true.cuda()
         Y_mask = Y_mask.cuda()
