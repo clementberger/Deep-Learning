@@ -76,9 +76,7 @@ def discriminative_trainer(model, data_loader, optimizer, criterion, inst=None, 
         if noise != 0 :
             batch_size = X.size()[0]
             indices = np.random.choice(batch_size, size = batch_size//10)
-            bruit = cuda(torch.tensor(np.random.normal(scale = noise, size = X[indices].size())))
-            print(bruit.dtype)
-            print(X.dtype)
+            bruit = cuda(torch.tensor(np.random.normal(scale = noise, size = X[indices].size()), dtype=torch.float32))
             X[indices] = X[indices] + bruit
             			
         if inst is not None:
