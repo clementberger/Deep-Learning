@@ -48,6 +48,12 @@ parser.add_argument('--val_split_path', default='./data/train_val.split',
 parser.add_argument('--log_dir', default='log',
         help='Directory for tensorboard logs')
 
+# Data augmentation
+parser.add_argument('--interpolation', default=False,
+        help='Whether to use interpolation for data augmentation or not.')
+parser.add_argument('--noise', type=float, default=0.0,
+        help='The variance of the noise if used.')
+
 def parse_arguments():
     return parser.parse_args()
     

@@ -21,6 +21,10 @@ anneal_factor = args.anneal_factor
 patience = args.patience
 base_path = os.path.join(args.log_dir, args.model_type)
 
+# Set data augmentation
+interpol = args.interpolation
+noise = args.noise
+
 # seeds = [0,42,1346,325,1243,76,423,567,34,534,46,456,346,12,239]
 seeds = [0]
 macro_f1_all_0 = []
@@ -43,7 +47,7 @@ for seed in seeds:
 
     # Other imports now
     from utils import *
-    from attention import *
+    from models import *
     # from model import *
     from data_utils import *
     from torch.utils.data import DataLoader, Subset, WeightedRandomSampler
@@ -101,7 +105,9 @@ for seed in seeds:
                     model=model,
                     data_loader=train_loader,
                     optimizer=optimizer,
-                    criterion=criterion)
+                    criterion=criterion,
+                    interpolation=interpol,
+                    noise=noise)
             # log in tensorboard
             writer.add_scalar('Training/Prediction Loss', loss, epoch)
             
@@ -128,8 +134,6 @@ for seed in seeds:
             print("#########################################################################################")
             print(epoch)
             print("#########################################################################################")
-            # Anneal LR
-            # scheduler.step()
     except KeyboardInterrupt:
         print('Stopping training. Now testing')
 
