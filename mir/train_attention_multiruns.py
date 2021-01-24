@@ -24,6 +24,7 @@ base_path = os.path.join(args.log_dir, args.model_type)
 # Set data augmentation
 interpol = args.interpolation
 noise = args.noise
+flip = args.flip
 
 # seeds = [0,42,1346,325,1243,76,423,567,34,534,46,456,346,12,239]
 seeds = [0]
@@ -107,7 +108,8 @@ for seed in seeds:
                     optimizer=optimizer,
                     criterion=criterion,
                     interpolation=interpol,
-                    noise=noise)
+                    noise=noise,
+                    flip=flip)
             # log in tensorboard
             writer.add_scalar('Training/Prediction Loss', loss, epoch)
             

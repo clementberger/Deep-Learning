@@ -56,7 +56,7 @@ def cuda(X):
         X = X.cuda()
     return X
 
-def discriminative_trainer(model, data_loader, optimizer, criterion, inst=None, interpolation = False, noise = 0.2):
+def discriminative_trainer(model, data_loader, optimizer, criterion, inst=None, interpolation = False, noise = 0., flip = False):
     model.train()
     loss_tracker = AverageMeter()
     for (X, _, Y_true, Y_mask) in tqdm(data_loader):
@@ -78,6 +78,13 @@ def discriminative_trainer(model, data_loader, optimizer, criterion, inst=None, 
             indices = np.random.choice(batch_size, size = batch_size//10)
             bruit = cuda(torch.tensor(np.random.normal(scale = noise, size = X[indices].size()), dtype=torch.float32))
             X[indices] = X[indices] + bruit
+        if flip :
+            size = X.size()
+            batch_size = size[0]
+            indices = np.random.choice(batch_size, size = batch_size//10)
+            T = size[1]
+            for t in range(T) :
+                X[indices, t] = X[indices, T-1-t]
             			
         if inst is not None:
             Y_true = Y_true[:,inst].view(-1,1)

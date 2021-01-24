@@ -15,8 +15,6 @@ class BiLSTM_Attention(nn.Module):
         self.bilstm = nn.LSTM(128, 20, batch_first = True, bidirectional = True, num_layers = num_layers, dropout = 0.2)
 
     def forward(self, x):
-        """input: (samples_num, freq_bins, time_steps, 1)
-        """
         x = x.transpose(1, 2)
         x = x[:, :, :, None].contiguous()
 
@@ -31,7 +29,7 @@ class BiLSTM_Attention(nn.Module):
         
 
         
-        att = att[:, :, :, 0]   # (samples_num, classes_num, time_steps)
+        att = att[:, :, :, 0]
 
         epsilon = 1e-7
         att = torch.clamp(att, epsilon, 1. - epsilon)

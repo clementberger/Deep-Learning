@@ -53,6 +53,8 @@ parser.add_argument('--interpolation', type=bool, default=False,
         help='Whether to use interpolation for data augmentation or not.')
 parser.add_argument('--noise', type=float, default=0.0,
         help='The variance of the noise if used.')
+parser.add_argument('--flip', type=bool, default=False,
+        help='Whether to use flip for data augmentation or not.')
 
 def parse_arguments():
     return parser.parse_args()
