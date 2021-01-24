@@ -60,11 +60,6 @@ def discriminative_trainer(model, data_loader, optimizer, criterion, inst=None, 
     model.train()
     loss_tracker = AverageMeter()
     for (X, _, Y_true, Y_mask) in tqdm(data_loader):
-        if noise != 0 :
-            batch_size = X.size()[0]
-            indices = np.random.choice(batch_size, size = batch_size//10)
-            bruit = np.random.normal(scale = noise, size = X[indices].size())
-            X[indices] = X[indices] + bruit
         X = cuda(X)
         Y_true = Y_true.cuda()
         Y_mask = Y_mask.cuda()
@@ -78,7 +73,11 @@ def discriminative_trainer(model, data_loader, optimizer, criterion, inst=None, 
                 X[i] = a*X[i]+b*X[i-1]
                 Y_true[i] = a*Y_true[i]+b*Y_true[i]
                 Y_mask[i] = a*Y_mask[i]+b*Y_mask[i]
-        
+        if noise != 0 :
+            batch_size = X.size()[0]
+            indices = np.random.choice(batch_size, size = batch_size//10)
+            bruit = cuda(torch.tensor(np.random.normal(scale = noise, size = X[indices].size())))
+            X[indices] = X[indices] + bruit
             			
         if inst is not None:
             Y_true = Y_true[:,inst].view(-1,1)
