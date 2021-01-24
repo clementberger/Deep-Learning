@@ -62,9 +62,11 @@ def discriminative_trainer(model, data_loader, optimizer, criterion, inst=None, 
     for (X, _, Y_true, Y_mask) in tqdm(data_loader):
         if noise != 0 :
             batch_size = X.size()[0]
+            print("###############")
             print(batch_size)
+            print("###############")
             indices = np.random.choice(batch_size, size = batch_size//10)
-            X[indices] += np.random.normal(scale = noise, size = X[indices].size())
+            X[indices] += np.random.normal(scale = float(noise), size = X[indices].size())
         X = cuda(X)
         Y_true = Y_true.cuda()
         Y_mask = Y_mask.cuda()
