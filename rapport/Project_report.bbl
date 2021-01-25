@@ -85,4 +85,9 @@ M.~Lagrange V.~Lostanlen, J.~Andén.
 \newblock {\em 5th International Conference on Digital Libraries for
   Musi-cology}, 09 2016.
 
+\bibitem{interpol}
+Hongyi Zhang, Moustapha Ciss{\'{e}}, Yann~N. Dauphin, and David Lopez{-}Paz.
+\newblock mixup: Beyond empirical risk minimization.
+\newblock {\em CoRR}, abs/1710.09412, 2017.
+
 \end{thebibliography}

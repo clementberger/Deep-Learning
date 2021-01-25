@@ -7,45 +7,45 @@ Warning--empty journal in squelette_progr
 Warning--empty journal in features_descr
 Warning--empty booktitle in kong
 Warning--empty booktitle in data_aug
-You've used 15 entries,
+You've used 16 entries,
             2120 wiz_defined-function locations,
-            581 strings with 6136 characters,
-and the built_in function-call counts, 4879 in all, are:
-= -- 435
-> -- 306
+            585 strings with 6279 characters,
+and the built_in function-call counts, 5185 in all, are:
+= -- 463
+> -- 329
 < -- 2
-+ -- 123
-- -- 106
-* -- 338
-:= -- 864
-add.period$ -- 45
-call.type$ -- 15
-change.case$ -- 98
++ -- 132
+- -- 114
+* -- 360
+:= -- 922
+add.period$ -- 48
+call.type$ -- 16
+change.case$ -- 105
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 185
-empty$ -- 341
-format.name$ -- 106
-if$ -- 984
+cite$ -- 20
+duplicate$ -- 195
+empty$ -- 358
+format.name$ -- 114
+if$ -- 1043
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 15
-newline$ -- 78
-num.names$ -- 30
-pop$ -- 111
+int.to.str$ -- 16
+missing$ -- 16
+newline$ -- 83
+num.names$ -- 32
+pop$ -- 116
 preamble$ -- 1
-purify$ -- 83
+purify$ -- 89
 quote$ -- 0
-skip$ -- 127
+skip$ -- 135
 stack$ -- 0
-substring$ -- 147
-swap$ -- 29
+substring$ -- 152
+swap$ -- 30
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 64
 warning$ -- 4
-while$ -- 36
-width$ -- 17
-write$ -- 157
+while$ -- 38
+width$ -- 18
+write$ -- 168
 (There were 4 warnings)
