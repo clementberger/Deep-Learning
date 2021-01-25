@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2020.10.26)  25 JAN 2021 15:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2020.10.26)  25 JAN 2021 16:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -415,82 +415,82 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 
 
 ] [2]
-<bilstm.png, id=64, 578.16pt x 311.9655pt>
+<bilstm.png, id=61, 578.16pt x 311.9655pt>
 File: bilstm.png Graphic file (type png)
 <use bilstm.png>
-Package pdftex.def Info: bilstm.png  used on input line 102.
+Package pdftex.def Info: bilstm.png  used on input line 86.
 (pdftex.def)             Requested size: 260.16959pt x 140.38318pt.
 
-Overfull \hbox (23.03365pt too wide) in paragraph at lines 102--103
+Overfull \hbox (23.03365pt too wide) in paragraph at lines 86--87
  [][] 
  []
 
-<cnn.png, id=65, 658.8615pt x 301.125pt>
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+09.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [3 <./bilstm.png>]
+<cnn.png, id=87, 658.8615pt x 301.125pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
-Package pdftex.def Info: cnn.png  used on input line 108.
+Package pdftex.def Info: cnn.png  used on input line 131.
 (pdftex.def)             Requested size: 428.2549pt x 195.72891pt.
-<cnnreduit.png, id=66, 554.67226pt x 302.3295pt>
+<cnnreduit.png, id=89, 554.67226pt x 302.3295pt>
 File: cnnreduit.png Graphic file (type png)
 <use cnnreduit.png>
-Package pdftex.def Info: cnnreduit.png  used on input line 114.
+Package pdftex.def Info: cnnreduit.png  used on input line 138.
 (pdftex.def)             Requested size: 249.6002pt x 136.04701pt.
 
-Overfull \hbox (12.46426pt too wide) in paragraph at lines 114--115
+Overfull \hbox (12.46426pt too wide) in paragraph at lines 138--139
  [][] 
  []
 
-<to_ref.png, id=67, 447.6725pt x 262.9825pt>
+<to_ref.png, id=90, 447.6725pt x 262.9825pt>
 File: to_ref.png Graphic file (type png)
 <use to_ref.png>
-Package pdftex.def Info: to_ref.png  used on input line 120.
+Package pdftex.def Info: to_ref.png  used on input line 146.
 (pdftex.def)             Requested size: 223.8357pt x 131.49092pt.
-<cnn_plot.png, id=69, 447.6725pt x 262.9825pt>
+<cnn_plot.png, id=92, 447.6725pt x 262.9825pt>
 File: cnn_plot.png Graphic file (type png)
 <use cnn_plot.png>
-Package pdftex.def Info: cnn_plot.png  used on input line 126.
+Package pdftex.def Info: cnn_plot.png  used on input line 152.
 (pdftex.def)             Requested size: 223.8357pt x 131.49092pt.
-<mel_data.png, id=70, 447.6725pt x 262.9825pt>
+<mel_data.png, id=93, 447.6725pt x 262.9825pt>
 File: mel_data.png Graphic file (type png)
 <use mel_data.png>
-Package pdftex.def Info: mel_data.png  used on input line 132.
+Package pdftex.def Info: mel_data.png  used on input line 158.
 (pdftex.def)             Requested size: 223.8357pt x 131.49092pt.
-<cnn_data.png, id=71, 450.68375pt x 262.9825pt>
+<cnn_data.png, id=94, 450.68375pt x 262.9825pt>
 File: cnn_data.png Graphic file (type png)
 <use cnn_data.png>
-Package pdftex.def Info: cnn_data.png  used on input line 138.
+Package pdftex.def Info: cnn_data.png  used on input line 164.
 (pdftex.def)             Requested size: 225.34131pt x 131.49092pt.
 (./Project_report.bbl (./Project_report.brf)
 \tf@brf=\write3
 \openout3 = `Project_report.brf'.
 
- [3 <./bilstm.png>] [4 <./cnn.png> <./cnnreduit.png> <./to_ref.png> <./cnn_plot
-.png> <./mel_data.png>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 148.
- [5
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 174.
+ [4] [5 <./cnn.png> <./cnnreduit.png> <./to_ref.png> <./cnn_plot.png> <./mel_da
+ta.png>] [6
 
  <./cnn_data.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 148.
- (./Project_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 148.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 148.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
 
-
-Package rerunfilecheck Warning: File `Project_report.brf' has changed.
-(rerunfilecheck)                Rerun to get bibliographical references right.
-
-Package rerunfilecheck Info: Checksums for `Project_report.brf':
-(rerunfilecheck)             Before: 134D498F7C6D0BF6C501B6D4212D8229;819
-(rerunfilecheck)             After:  CA52A940738C56EE56C5C8B41E6DFB95;819.
+(./Project_report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 174.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 174.
+Package rerunfilecheck Info: File `Project_report.brf' has not changed.
+(rerunfilecheck)             Checksum: 86899288958953360CAF7D56183806CA;873.
  ) 
 Here is how much of TeX's memory you used:
- 7484 strings out of 480906
- 108447 string characters out of 5910771
+ 7511 strings out of 480906
+ 108790 string characters out of 5910771
  387822 words of memory out of 5000000
- 22870 multiletter control sequences out of 15000+600000
- 557976 words of font info for 78 fonts, out of 8000000 for 9000
+ 22889 multiletter control sequences out of 15000+600000
+ 558290 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,9n,45p,1253b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,9n,45p,1253b,348s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -503,10 +503,10 @@ y7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on Project_report.pdf (5 pages, 318529 bytes).
+Output written on Project_report.pdf (6 pages, 321424 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
- 145 compressed objects within 2 object streams
- 47 named destinations out of 1000 (max. 500000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 156 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

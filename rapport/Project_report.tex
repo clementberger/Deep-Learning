@@ -46,7 +46,7 @@ Multi-instrument recognition is a subfield of Music Information Retrieval (MIR) 
 
 Such a task requires not only machine learning skills, but also signal processing expertise. Great results have been achieved in single-instrument recognition, see e.g. \cite{mir}. However, polyphonic sounds are the superposition of multiple instruments with different charasteristics and played differently therefore most of these techniques can not be applied for our task.
 
-Another challenge is the difficulty to create datasets. There are roughly two types of datasets of annotated polyphonic sounds. First there are small datasets but very strongly annotated. We can for example cite MusicNet \cite{MusicNet} containing 330 examples. Such datasets face big issues like overfitting. The other type of datasets is huge datasets (at least compared to the previous ones) but only partially labeled. In 2018 has been released a dataset called OpenMIC \cite{MIC} which belongs to the second category. OpenMIC contains 20 000 audio clips of 10 seconds, sampled at 44,1 kHz. However, given an audio clip, we only know if an instrument is in the clip or not but the offset et onset times are not provided. Practically this means that an audio containing 1 second of violin will have the same label as one completely played with a violin. Moreover, there are some missing labels, meaning that given an audio clip, some instrument labels are not provided. 
+Another challenge is the difficulty to create datasets. There are roughly two types of datasets of annotated polyphonic sounds. First there are small datasets but very strongly annotated. We can for example cite MusicNet \cite{MusicNet} containing 330 examples. Such datasets face big issues like overfitting. The other type of datasets is huge datasets (at least compared to the previous ones) but only partially labeled. In 2018 has been released a dataset called OpenMIC \cite{MIC} which belongs to the second category. OpenMIC contains 20 000 audio clips of 10 seconds, sampled at 44,1 kHz. However, given an audio clip, we only know if an instrument is in the clip or not but the offset and onset times are not provided. Practically this means that an audio containing 1 second of violin will have the same label as one completely played with a violin. Moreover, there are some missing labels, meaning that given an audio clip, some instrument labels are not provided. 
 \subsection{Problem definition}
 \subsubsection{Signal processing : different transformations}
 We provide here a quick overview of two different transformations used in audio processing to create a visual representation of an a signal.
@@ -81,6 +81,12 @@ where $h(x)$ is the output of the embedding layer, $v$ is a vector to be learned
 In 2020, Amir Kenarsari-Anhari \cite{squelette_progr} built upon these works to improve the efficiency of the network introduced in the previous section. His idea was to use Recurrent Neural Networks (RNN) to better exploit the fact that the different vectors of features correspond to different seconds of the audio clip (as explained in the Section 1.2.1). In particular, he used a BiLSTM structure. An LSTM is a particular structure of RNN built especially to improve the ability of the network to pass information through time, which has proved its efficiency in Natural Language Processing or to study Time Series (see \cite{lstm} for a complete description). It is here set to be bidirectional in the sense that it treats the data by following the its direction as well as reversing it.
 
 Practically, the BiLSTM replaced the embedding and prediction layers used by Gurarani \etal to be coupled with the attention mechanism. The resulting architecture, presented in figure \ref{mel}, improved the efficiency of the model and will be considered as the state of the art for us. 
+\begin{figure}
+	\centering
+	\includegraphics[scale = 0.45]{bilstm.png}
+	\caption{Structure using Log-Mel Spectrogram}
+	\label{mel}
+\end{figure}
 \subsection{Using scalograms}
 In 2020, a paper from Dutta \etal \cite{features_descr} investigated the use of scalograms based on AWT using a Morse wavelet to replace the spectrograms, for \textit{single}-instrument recognition. The problem of the spectrograms using STFT is that as the signal is cut in pieces before processing each part independently, it is harder to get back the unity of the signal. That is a particular issue in our case as we do not have the onset and offset times of the instruments. This means that some pieces of the signal (after cutting) are treated as if they were containing an instrument while they may not. This procedure also significantly looses efficiency when the signal contains very low or very high frequencies. 
 
@@ -95,26 +101,46 @@ Zhang \etal \cite{interpol} experimented interpolation between different samples
 \[l_z = \lambda l_x+(1-\lambda)l_y\]
 \section{Methodology}
 \subsection{BiLSTM}
-\subsection{Spectorgrams}
-\subsection{Data augmentation}
-\begin{figure}
-	\centering
-	\includegraphics[scale = 0.45]{bilstm.png}
-	\caption{Structure using Log-Mel Spectrogram}
-	\label{mel}
-\end{figure}
+As said earlier, we consider \cite{squelette_progr} as our state of the art. It has to be noted that the article does not provide all the details necessaery to reproduce the exact same architecture, neither their code. Thus our first step is to try to reproduce their result, using an architecture corresponding to \ref{mel}.
+\begin{enumerate}
+	\item First, we get the features of the VGGish model furnished by the OpenMIC website.
+	\item Then our network is divided into two parts :
+	\begin{itemize}
+		\item On one hand we set the attention mechanism as described in Section 2.1.
+		\item On the other hand we use a BiLSTM architecture with dropout. Here we try two versions with different number of layers to see the impact of the depth of the RNN component.
+	\end{itemize}
+	\item finally we agregate these two parts with a tanh non-linearity to get our predictions
+\end{enumerate}
+The best of these networks (for 1 layer, as discussed later in Section 4.) gives us our benchmark before trying other techniques. We will from now on refer to this architecture as the Mel architecture.
+\subsection{Spectrograms}
+Next, we want to see if the AWT and spectrograms used by Dutta \etal can be transposed to the multi-instrument recognition. Indeed, the reasoning behind it is independent of the number of predictions we want to make and thus is still relevant in our case. 
+
+Thus for this part, we take the raw audio sample of OpenMIC. We then compute their scalograms using a Morse wavelet. Here we are challenged by our lack of computational powerand memory. Indeed, to be able to train on our computers and even to be able to compute all scalograms in a reasonable amount of time, we had to reduce the resolution of the scalograms to 128x128. Hence we expect a loss of performance due to our imprecision (this has to be compared with the VGGish features which have already been calculated for us !).
+
+The next issue was that the VGGish network had been trained with spectrograms, meaning that we can not use its pretrained version. With this constatation in mind, we deciced to replace the VGGish by the CNN used by Dutta \etal, as it has been proven to be quite efficient. The architecture is the following :
+\begin{itemize}
+	\item \textbf{conv1} : an 8-filter convolutional layer taking the 128x128 scalograms
+	\item \textbf{conv2} : a 16-filter convolutional layer
+	\item \textbf{conv3} : a 32-filter convolutional layer
+	\item \textbf{conv4} : a 32-filter convolutional layer followed by a dropout
+	\item our \textbf{BiLSTM + attention} structure
+\end{itemize}
+This architecture is represented in figure \ref{cnn}.
 \begin{figure*}
 	\centering
 	\includegraphics[scale = 0.65]{cnn.png}
 	\caption{Convolutional network taking scalograms}
 	\label{cnn}
 \end{figure*}
+As we had to reduce the resolution, we wondered if such a deep network was necessary. To test this, we also tried the same structure without the \textbf{conv3} and \textbf{conv4} layers (see \ref{reduit}).
 \begin{figure}
 	\centering
 	\includegraphics[scale = 0.45]{cnnreduit.png}
 	\caption{Convolutional network taking scalograms, reduced structure}
 	\label{reduit}
 \end{figure}
+\subsection{Data augmentation}
+
 \begin{figure}
 	\centering
 	\includegraphics[scale = 0.5]{to_ref.png}
