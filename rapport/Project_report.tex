@@ -200,7 +200,11 @@ We observe that for most instruments, no data augmentation gives better results,
 
 The comparison between each technique is not very clear. A difficulty is that it depends on the instrument we look at. Some techniques seem to perform better on some instruments and worse on others. All in all, using all techniques seems to give more consistent results, as it combines all the benefits of each technique.
 \section{Conclusion}
+This work has been devoted to train a model on the OpenMIC dataset for multi-instrument recognition. A combination of spectrogram, pretrained VGGish network and a BiLSTM + attention structure achieves great results. We investigated the depth of the RNN part to show that it should be too deep, as the VGGish network already provides high level processing.
 
+The use of an AWT and scalograms instead of STFT and spectorgrams gave promising results. Our lack of computational power prevents us from exploiting this architecture at its full potential, but future works on it could improve state-of-the-art.
+
+Different data augmentation techniques have been tested, unfortunately not successfully. Further investigation has to be done to understand why we get these results. Training for a longer period could help. Another interesting trial would be, with the required computational power, to use them directly on the raw audio and not on the visual representation to see if this leads to better results.
 {\small
 	\bibliographystyle{ieee_fullname}
 	\bibliography{report}
