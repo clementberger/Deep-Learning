@@ -70,6 +70,9 @@ with
 \[w_x =\frac{\sigma(v^{T}h(x))}{\sum_{x'}\sigma(v^{T}h(x)')}\]
 where $h(x)$ is the output of the embedding layer, $v$ is a vector to be learned, and $\sigma$ is the sigmoid function. Note that the division is here to enforce the sum of coefficients to be 1. The formula also means that the attention layer takes as input the results of the embedding layer and then use this information to aggregate the results of the prediction layer represented by $f$.
 \subsection{Using a BiLSTM architecture}
+In 2020, Amir Kenarsari-Anhari \cite{squelette_progr} built upon these works to improve the efficiency of the network introduced in the previous section. His idea was to use Recurrent Neural Networks (RNN) to better exploit the fact that the different vectors of features correspond to different seconds of the audio clip (as explained in the Section 1.2.1). In particular, he used a BiLSTM structure. An LSTM is a particular structure of RNN built especially to improve the ability of the network to pass information through time, which has proved its efficiency in Natural Language Processing or to study Time Series (see \cite{lstm} for a complete description). It is here set to be bidirectional in the sense that it treats the data by following the its direction as well as reversing it.
+
+The complete architecture, presented in figure \ref{mel}, improved the efficiency of the model and will be considered as the state of the art for us. 
 \subsection{Using scalograms}
 \subsection{Data augmentation}
 \section{Methodology}

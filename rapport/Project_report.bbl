@@ -30,6 +30,11 @@ S. {Hershey}, S. {Chaudhuri}, D.~P.~W. {Ellis}, J.~F. {Gemmeke}, A. {Jansen},
 \newblock In {\em 2017 IEEE International Conference on Acoustics, Speech and
   Signal Processing (ICASSP)}, pages 131--135, 2017.
 
+\bibitem{lstm}
+Sepp Hochreiter and Jürgen Schmidhuber.
+\newblock Long short-term memory.
+\newblock {\em Neural computation}, 9:1735--80, 12 1997.
+
 \bibitem{MIC}
 Eric~J. Humphrey, S. Durand, and B. McFee.
 \newblock Openmic-2018: An open data-set for multiple instrument recognition.
