@@ -31,22 +31,29 @@
 \@writefile{brf}{\backcite{mel}{{1}{1.2.1}{subsubsection.1.2.1}}}
 \citation{VGGish_net}
 \citation{vgg}
-\citation{MusicNet}
-\citation{MIC}
+\citation{kong}
+\citation{audioset}
+\citation{attention}
+\citation{kong}
 \@writefile{brf}{\backcite{spectrogram}{{2}{1.2.1}{subsubsection.1.2.1}}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.2}VGGish network}{2}{subsubsection.1.2.2}\protected@file@percent }
 \@writefile{brf}{\backcite{VGGish_net}{{2}{1.2.2}{subsubsection.1.2.2}}}
 \@writefile{brf}{\backcite{vgg}{{2}{1.2.2}{subsubsection.1.2.2}}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.3}Training using OpenMIC}{2}{subsubsection.1.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}\hskip -1em.\nobreakspace  {}Related work}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}\hskip -1em.\nobreakspace  {}Methodology}{2}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.\nobreakspace  {}Motivation and problem definition}{2}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.\nobreakspace  {}Introduction on instrument classification}{2}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}\hskip -1em.\nobreakspace  {}Attention mechanism}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{brf}{\backcite{kong}{{2}{2.1}{subsection.2.1}}}
+\@writefile{brf}{\backcite{audioset}{{2}{2.1}{subsection.2.1}}}
+\@writefile{brf}{\backcite{attention}{{2}{2.1}{subsection.2.1}}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Structure using Log-Mel Spectrogram}}{2}{figure.1}\protected@file@percent }
 \newlabel{mel}{{1}{2}{Structure using Log-Mel Spectrogram}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}\hskip -1em.\nobreakspace  {}About datasets}{2}{subsection.4.2}\protected@file@percent }
-\@writefile{brf}{\backcite{MusicNet}{{2}{4.2}{subsection.4.2}}}
-\@writefile{brf}{\backcite{MIC}{{2}{4.2}{subsection.4.2}}}
+\@writefile{brf}{\backcite{kong}{{2}{2.1}{subsection.2.1}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}\hskip -1em.\nobreakspace  {}Using a BiLSTM architecture}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}\hskip -1em.\nobreakspace  {}Using scalograms}{2}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}\hskip -1em.\nobreakspace  {}Data augmentation}{2}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}\hskip -1em.\nobreakspace  {}Methodology}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.\nobreakspace  {}Motivation and problem definition}{2}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.\nobreakspace  {}Our problem}{2}{subsection.4.1}\protected@file@percent }
 \citation{squelette_progr}
 \citation{squelette_progr}
 \citation{VGGish_net}
@@ -56,8 +63,7 @@
 \newlabel{cnn}{{2}{3}{Convolutional network taking scalograms}{figure.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Convolutional network taking scalograms, reduced structure}}{3}{figure.3}\protected@file@percent }
 \newlabel{reduit}{{3}{3}{Convolutional network taking scalograms, reduced structure}{figure.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}\hskip -1em.\nobreakspace  {}Our problem}{3}{subsection.4.3}\protected@file@percent }
-\@writefile{brf}{\backcite{squelette_progr}{{3}{4.3}{subsection.4.3}}}
+\@writefile{brf}{\backcite{squelette_progr}{{3}{4.1}{subsection.4.1}}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.\nobreakspace  {}Methodology}{3}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}\hskip -1em.\nobreakspace  {}Squeletton of the algorithm}{3}{subsection.5.1}\protected@file@percent }
 \@writefile{brf}{\backcite{squelette_progr}{{3}{5.1}{subsection.5.1}}}
@@ -65,6 +71,7 @@
 \@writefile{brf}{\backcite{attention}{{3}{5.1}{subsection.5.1}}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}\hskip -1em.\nobreakspace  {}Changing the feature learning}{3}{subsection.5.2}\protected@file@percent }
 \@writefile{brf}{\backcite{features_descr}{{3}{5.2}{subsection.5.2}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}\hskip -1em.\nobreakspace  {}Data augmentation}{3}{subsection.5.3}\protected@file@percent }
 \citation{data_aug}
 \citation{squelette_progr}
 \citation{squelette_progr}
@@ -74,17 +81,18 @@
 \bibdata{report}
 \bibcite{squelette_progr}{1}
 \bibcite{features_descr}{2}
-\bibcite{attention}{3}
-\bibcite{VGGish_net}{4}
-\bibcite{MIC}{5}
-\bibcite{vgg}{6}
-\bibcite{metric}{7}
-\bibcite{spectrogram}{8}
-\bibcite{mel}{9}
-\bibcite{data_aug}{10}
-\bibcite{MusicNet}{11}
-\bibcite{mir}{12}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}\hskip -1em.\nobreakspace  {}Data augmentation}{4}{subsection.5.3}\protected@file@percent }
+\bibcite{audioset}{3}
+\bibcite{attention}{4}
+\bibcite{VGGish_net}{5}
+\bibcite{MIC}{6}
+\bibcite{vgg}{7}
+\bibcite{kong}{8}
+\bibcite{metric}{9}
+\bibcite{spectrogram}{10}
+\bibcite{mel}{11}
+\bibcite{data_aug}{12}
+\bibcite{MusicNet}{13}
+\bibcite{mir}{14}
 \@writefile{brf}{\backcite{data_aug}{{4}{5.3}{subsection.5.3}}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}\hskip -1em.\nobreakspace  {}Evaluation}{4}{section.6}\protected@file@percent }
 \@writefile{brf}{\backcite{squelette_progr}{{4}{6}{section.6}}}

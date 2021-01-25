@@ -61,6 +61,17 @@ In this work we try to train a network on the OpenMIC dataset for multi-instrume
 
 The OpenMIC dataset has been labeled with 20 instruments. For each of the 20 000 audio clips and each instruments, we have a binary value indicating if we have a label for this couple (audio, instrument) or not, and if we have so, we also have the probability that the instrument is effectively in the audio clip. In addition of the raw audios and labels, OpenMIC also provides features extracted using the VGGish. More precisely, a Log-Mel Spectrogram is computed for each raw audio, one frame corresponding to 1 second, and then given to the VGGish. After that, a Principal Component Analysis (PCA) is done on the extracted features for each frame. We end up with 10 vectors (one per second) containing 128 features, for each audio clip.
 \section{Related work}
+\subsection{Attention mechanism}
+Multi-instrument recognition is not a new topic, and several works have been published. In 2018, Kong \etal \cite{kong} introduced an attention mechanism to train a CNN on another weakly-labeled dataset, AudioSet \cite{audioset}. This mechanism has then been used by Gururani \etal \cite{attention} on the OpenMIC dataset. Starting from the VGGish features furnished by OpenMIC, an embedding layer is then followed by a prediction layer coupled with the attention mechanism to produce the desired predictions. Let's describe briefly the attention mechanism. 
+
+In Multi-Instance Label problems, a bag of labels is produced by a score function $S(X)=\mu(f(x)_{x\in X})$, where X is the input composed of multiple instances x, $f$ gives a prediction for each of these instances and $\mu$ aggregates these predictions to give the final prediction. The score (the global score $S$ as well as the instance-level scores $f$) represents in our case the probability of the label (here the probability for the instruments to effectively be part of the audio). Usually a max or an average is used for the aggregation function. However, previous works as Kong \etal \cite{kong} have shown that learning this function could lead to significant improvements. With this in mind, Gururani \etal parametrized this operator as :
+\[S(X)=\sum_{x}w_xf(x)\]
+with 
+\[w_x =\frac{\sigma(v^{T}h(x))}{\sum_{x'}\sigma(v^{T}h(x)')}\]
+where $h(x)$ is the output of the embedding layer, $v$ is a vector to be learned, and $\sigma$ is the sigmoid function. Note that the division is here to enforce the sum of coefficients to be 1. The formula also means that the attention layer takes as input the results of the embedding layer and then use this information to aggregate the results of the prediction layer represented by $f$.
+\subsection{Using a BiLSTM architecture}
+\subsection{Using scalograms}
+\subsection{Data augmentation}
 \section{Methodology}
 \begin{figure}
 	\centering
@@ -81,17 +92,6 @@ The OpenMIC dataset has been labeled with 20 instruments. For each of the 20 000
 	\label{reduit}
 \end{figure}
 \section{Motivation and problem definition}
-\subsection{Introduction on instrument classification}
-Multi-instrument classification consists in, given an audio clip and a list of instruments, telling for each instrument if it is in the audio or not. This task is for example mandatory for users who want to make music research based on instrumental criteria. It can also be useful in the task of genre classification, or for source separation. Recently, researchers have been focusing on machine learning techniques and especially neural networks to solve this problem.
-
-While single-instrument classification has achieved a great level of precision, recognizing instruments within a polyphonic audio clip is still a hard challenge. A big difficulty comes from the fact that a same instrument can be played in very different ways, with for examples different timbres and notes. As a result we get not only that a same instrument can produce very different sounds but also the fact that two different instruments can produce almost the same sound. This difficulty is already the source of a lot of research for single-instrument classification, but adding the superposition of these sounds makes multi-instrument classification a lot harder.
-
-\subsection{About datasets}
-
-Another challenge is the lack of data. Training a neural network requires as many data as possible but there is nothing equivalent to for example ImageNet for instrument recognition. The main datasets are either strongly labeled but with very few samples - see for example MusicNet \cite{MusicNet} with 330 clips - or contain a reasonable amount of samples but with only partial labels. 
-
-In 2018 has been released an open dataset called OpenMIC \cite{MIC} which belongs to the second category. This is the biggest open dataset for multi-instrument classification, with 20 000 (10-second) audio clips. The drawback of this huge number of clips (compared to the other existing datasets) is the fact that the dataset is only weakly-labeled, which means that given an audio clip, we only know the presence or absence of an instrument, without any clue on the onset or offset times. Moreover, given an audio clip, not all instruments are labeled, which means that there are instruments for which we don't know if they are in the audio or not. These constraints make the training of a network a lot harder, however the size of the dataset makes it interesting to study.
-
 \subsection{Our problem}
 
 Given an audio clip and a list of instruments, we aim to determine, for each instrument, if it is played during the audio or not. Our goal is to train a neural network to achieve this task, using the OpenMIC dataset. The underlying goal of using this dataset is to try to find out how to exploit weakly and partially labeled data. 

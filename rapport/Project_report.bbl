@@ -11,6 +11,12 @@ Arindam Dutta, Dibakar Sil, Aniruddha Chandra, and Sarbani Palit.
   localized features.
 \newblock pages 1--6, 05 2020.
 
+\bibitem{audioset}
+Jort~F. Gemmeke, Daniel P.~W. Ellis, Dylan Freedman, Aren Jansen, Wade
+  Lawrence, R.~Channing Moore, Manoj Plakal, and Marvin Ritter.
+\newblock Audio set: An ontology and human-labeled dataset for audio events.
+\newblock In {\em Proc. IEEE ICASSP 2017}, New Orleans, LA, 2017.
+
 \bibitem{attention}
 Siddharth Gururani, Mohit Sharma, and Alexander Lerch.
 \newblock An attention mechanism for musical instrument recognition.
@@ -33,6 +39,12 @@ Eric~J. Humphrey, S. Durand, and B. McFee.
 A.~Zisserman K.~Simonyan.
 \newblock Very deep convolutional networks for large-scale image recognition.
 \newblock {\em ArXiv}, September 2014.
+
+\bibitem{kong}
+Qiuqiang Kong, Yong Xu, and Mark Plumbley.
+\newblock Audio set classification with attention model: A probabilistic
+  perspective.
+\newblock 04 2018.
 
 \bibitem{metric}
 A. Mesaros, Toni Heittola, and T. Virtanen.

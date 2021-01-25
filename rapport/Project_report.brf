@@ -5,9 +5,11 @@
 \backcite {spectrogram}{{2}{1.2.1}{subsubsection.1.2.1}}
 \backcite {VGGish_net}{{2}{1.2.2}{subsubsection.1.2.2}}
 \backcite {vgg}{{2}{1.2.2}{subsubsection.1.2.2}}
-\backcite {MusicNet}{{2}{4.2}{subsection.4.2}}
-\backcite {MIC}{{2}{4.2}{subsection.4.2}}
-\backcite {squelette_progr}{{3}{4.3}{subsection.4.3}}
+\backcite {kong}{{2}{2.1}{subsection.2.1}}
+\backcite {audioset}{{2}{2.1}{subsection.2.1}}
+\backcite {attention}{{2}{2.1}{subsection.2.1}}
+\backcite {kong}{{2}{2.1}{subsection.2.1}}
+\backcite {squelette_progr}{{3}{4.1}{subsection.4.1}}
 \backcite {squelette_progr}{{3}{5.1}{subsection.5.1}}
 \backcite {VGGish_net}{{3}{5.1}{subsection.5.1}}
 \backcite {attention}{{3}{5.1}{subsection.5.1}}
