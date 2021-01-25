@@ -178,7 +178,11 @@ We can immediately see that the results are mostly worse than state-of-the-art (
 
 We also note that the depth of the CNN has only a small influence on the performance. Most instruments do not differ between them. It still seems that the deeper network is more efficient, so is to be preferred.
 \subsection{Data augmentation}
+At last we try to see the influence of data augmentation on our models. Each data augmentation added for a training is applied to one tenth of the each batch. For example, if we only use interpolation, one tenth of each batch will be modified by interpolation. When we use all techniques, one tenth is modified by interpolation, one tenth by noise and one tenth by flip.
 
+The variance of the centered gaussian noise is set to 0.2 as in \cite{data_aug}. For the interpolation, the coefficients are set by using a beta distribution of parameters 0.2 and 0.2, to follow \cite{squelette_progr}. We keep the batch-size and number of epochs to continue our comparisons.
+
+We first perform each data augmentation technique individually, on the Mel architecture. Then we use them all at once. Results are compared with no data augmentation, see \ref{mel_data}. We then repeat the procedure on the CNN architecture, see \ref{mel_data}.
 
 \begin{figure}
 	\centering
@@ -192,6 +196,9 @@ We also note that the depth of the CNN has only a small influence on the perform
 	\caption{Comparison of the instrument-level F1-score between our different data augmentation strategies for the CNN structure.}
 	\label{cnn_data}
 \end{figure}
+We observe that for most instruments, no data augmentation gives better results, especially for the Mel architecture. This is a surprising result. We are not sure where it exactly comes from. Our best guess is that the number of epochs may be a bit too low to see real benefits from data augmentation, considering the size of the dataset. We still see that the CNN architecture responded better than the Mel architecture to these transformations, indicating that our techniques may be more compatible with the spectrograms.
+
+The comparison between each technique is not very clear. A difficulty is that it depends on the instrument we look at. Some techniques seem to perform better on some instruments and worse on others. All in all, using all techniques seems to give more consistent results, as it combines all the benefits of each technique.
 \section{Conclusion}
 
 {\small
