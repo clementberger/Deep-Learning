@@ -49,17 +49,17 @@ Such a task requires not only machine learning skills, but also signal processin
 Another challenge is the difficulty to create datasets. There are roughly two types of datasets of annotated polyphonic sounds. First there are small datasets but very strongly annotated. We can for example cite MusicNet \cite{MusicNet} containing 330 examples. Such datasets face big issues like overfitting. The other type of datasets is huge datasets (at least compared to the previous ones) but only partially labeled. In 2018 has been released a dataset called OpenMIC \cite{MIC} which belongs to the second category. OpenMIC contains 20 000 audio clips of 10 seconds, sampled at 44,1 kHz. However, given an audio clip, we only know if an instrument is in the clip or not but the offset and onset times are not provided. Practically this means that an audio containing 1 second of violin will have the same label as one completely played with a violin. Moreover, there are some missing labels, meaning that given an audio clip, some instrument labels are not provided. 
 \subsection{Problem definition}
 \subsubsection{Signal processing : different transformations}
-We provide here a quick overview of two different transformations used in audio processing to create a visual representation of an a signal.
+We provide here a quick overview of two different transformations used in audio processing to create a visual representation of a signal.
 
 The first one is the genration of a Log-Mel Spectrogram. This is the result of a transformation based on the Short-Time Fourier Transform. The raw signal is divided into a certain number of overlapping frames, before applying a Fourier Transform on each frame. This result in a time frequency representation of the signal, using color variations to represent the magnitude of the Fourier Transforms. However, human sensibility is not homogeneous in frequencies. To account for this problem, we convert the Hertz into what is called a Mel scale \cite{mel}. It is a non linear transformation of the frequencies to get a scale which better describe human hearing. The resulting visual representation is called a Log-Mel Spectrogram. Such representations have been successfully used for music recognition, see e.g. \cite{spectrogram}.
 
-The second one is the AWT used to generate a scalogram. Given a signal $x(t)$ and a wavelet $\psi(t)$ satisfying $\psi(t)=0$ for $t<0$, a function acting as a filter on the signal, the AWT of the signal is $AWT_{\psi}(t,s)=(1/2\pi)\int_0^\infty \bar{\psi}(s\omega)x(\omega)e^{j\omega}d\omega$. This is a variant of the Continuous Wavelet Transform comonly used in signal processing. We proceed as for the spectrogram to get a visual representation of this transform, which is then called a scalogram.
+The second one is the AWT used to generate a scalogram. Given a signal $x(t)$ and a wavelet $\psi(t)$ satisfying $\psi(t)=0$ for $t<0$, a function acting as a filter on the signal, the AWT of the signal is $AWT_{\psi}(t,s)=(1/2\pi)\int_0^\infty \bar{\psi}(s\omega)x(\omega)e^{i\omega t}d\omega$. This is a variant of the Continuous Wavelet Transform comonly used in signal processing. We proceed as for the spectrogram to get a visual representation of this transform, which is then called a scalogram.
 \subsubsection{VGGish network}
 This section is devoted to briefly present a network created recently for multi-instrument recognition, called VGGish \cite{VGGish_net}. This name simply comes from the fact that it is derived from the classical VGG model \cite{vgg} used for image recognition. Amongst other changes, it has been modified to receive a Log-Mel Spectrogram as entry and the end of the network acts now as a compact embedding layer. A precise definition can be found \href{https://github.com/tensorflow/models/tree/master/research/audioset/vggish}{here}.
 \subsubsection{F1-score}
 For instrument classification, the performances of an algorithm are generally not measured in terms of the usual accuracy. Indeed, as some instruments are easier than others to recognize, a difference of accuracy doesn't perfectly reflect an improvement in the classification of hard instruments. Therefore, another metric called the F1 score has been created specificaly for this purpose \cite{metric}. 
 
-We talk about true positive (TP) when both the network and the ground truth set the instrument as present in the audio. When the prediction is negative but should be positive, it is called a false negative (FN). There are similarly the false positive (FP) when the network predicts absence when it should not, and true negative when ground truth and network agree on the absence of the instrument. Then the precision (P) and recall (R) are introduced as :
+We talk about true positive (TP) when both the network and the ground truth set the instrument as present in the audio. When the prediction is negative but should be positive, it is called a false negative (FN). There are similarly the false positive (FP) when the network predicts the presence when it should not, and true negative when ground truth and network agree on the absence of the instrument. Then the precision (P) and recall (R) are introduced as :
 \[P = \frac{TP}{TP+FP}\]
 \[R=\frac{TP}{TP+FN}\]
 Finally the F1-score is calculated as :
@@ -78,7 +78,7 @@ with
 \[w_x =\frac{\sigma(v^{T}h(x))}{\sum_{x'}\sigma(v^{T}h(x)')}\]
 where $h(x)$ is the output of the embedding layer, $v$ is a vector to be learned, and $\sigma$ is the sigmoid function. Note that the division is here to enforce the sum of coefficients to be 1. The formula also means that the attention layer takes as input the results of the embedding layer and then use this information to aggregate the results of the prediction layer represented by $f$.
 \subsection{Using a BiLSTM architecture}
-In 2020, Amir Kenarsari-Anhari \cite{squelette_progr} built upon these works to improve the efficiency of the network introduced in the previous section. His idea was to use Recurrent Neural Networks (RNN) to better exploit the fact that the different vectors of features correspond to different seconds of the audio clip (as explained in the Section 1.2.1). In particular, he used a BiLSTM structure. An LSTM is a particular structure of RNN built especially to improve the ability of the network to pass information through time, which has proved its efficiency in Natural Language Processing or to study Time Series (see \cite{lstm} for a complete description). It is here set to be bidirectional in the sense that it treats the data by following the its direction as well as reversing it.
+In 2020, Amir Kenarsari-Anhari \cite{squelette_progr} built upon these works to improve the efficiency of the network introduced in the previous section. His idea was to use Recurrent Neural Networks (RNN) to better exploit the fact that the different vectors of features correspond to different seconds of the audio clip (as explained in the Section 1.2.1). In particular, he used a BiLSTM structure. An LSTM is a particular structure of RNN built especially to improve the ability of the network to pass information through time, which has proved its efficiency in Natural Language Processing or to study Time Series (see \cite{lstm} for a complete description). It is here set to be bidirectional in the sense that it treats the data by following its direction as well as reversing it.
 
 Practically, the BiLSTM replaced the embedding and prediction layers used by Gurarani \etal to be coupled with the attention mechanism. The resulting architecture, presented in figure \ref{mel}, improved the efficiency of the model and will be considered as the state of the art for us. 
 \begin{figure}
@@ -125,7 +125,7 @@ The next issue was that the VGGish network had been trained with spectrograms, m
 	\item \textbf{conv4} : a 32-filter convolutional layer followed by a dropout
 	\item our \textbf{BiLSTM + attention} structure
 \end{itemize}
-This architecture is represented in figure \ref{cnn}.
+All convolutional layers have a 3x3 kernel. This architecture is represented in figure \ref{cnn}.
 \begin{figure*}
 	\centering
 	\includegraphics[scale = 0.65]{cnn.png}
@@ -140,7 +140,7 @@ As we had to reduce the resolution, we wondered if such a deep network was neces
 	\label{reduit}
 \end{figure}
 \subsection{Data augmentation}
-
+Our last step is to see the effect of data augmentation techniques, as suggested in \cite{squelette_progr}. The first technique we use is the interpolation described earlier. We also try to add a Gaussian noise as in \cite{data_aug}.
 \begin{figure}
 	\centering
 	\includegraphics[scale = 0.5]{to_ref.png}
