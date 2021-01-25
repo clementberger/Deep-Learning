@@ -6,45 +6,45 @@ Database file #1: report.bib
 Warning--empty journal in squelette_progr
 Warning--empty journal in features_descr
 Warning--empty booktitle in data_aug
-You've used 10 entries,
+You've used 12 entries,
             2120 wiz_defined-function locations,
-            554 strings with 5342 characters,
-and the built_in function-call counts, 3254 in all, are:
-= -- 290
-> -- 197
+            564 strings with 5653 characters,
+and the built_in function-call counts, 3801 in all, are:
+= -- 341
+> -- 232
 < -- 2
-+ -- 79
-- -- 68
-* -- 221
-:= -- 573
-add.period$ -- 30
-call.type$ -- 10
-change.case$ -- 64
++ -- 94
+- -- 80
+* -- 256
+:= -- 677
+add.period$ -- 36
+call.type$ -- 12
+change.case$ -- 76
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 127
-empty$ -- 229
-format.name$ -- 68
-if$ -- 660
+cite$ -- 15
+duplicate$ -- 147
+empty$ -- 263
+format.name$ -- 80
+if$ -- 766
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 10
-newline$ -- 53
-num.names$ -- 20
-pop$ -- 74
+int.to.str$ -- 12
+missing$ -- 12
+newline$ -- 63
+num.names$ -- 24
+pop$ -- 82
 preamble$ -- 1
-purify$ -- 54
+purify$ -- 64
 quote$ -- 0
-skip$ -- 91
+skip$ -- 107
 stack$ -- 0
-substring$ -- 100
-swap$ -- 24
+substring$ -- 111
+swap$ -- 26
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 40
+type$ -- 48
 warning$ -- 3
-while$ -- 25
-width$ -- 12
-write$ -- 104
+while$ -- 29
+width$ -- 14
+write$ -- 126
 (There were 3 warnings)

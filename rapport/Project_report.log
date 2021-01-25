@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2020.10.26)  25 JAN 2021 11:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2020.10.26)  25 JAN 2021 12:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -415,28 +415,28 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 
 
 ]
-<bilstm.png, id=30, 578.16pt x 311.9655pt>
+<bilstm.png, id=29, 578.16pt x 311.9655pt>
 File: bilstm.png Graphic file (type png)
 <use bilstm.png>
-Package pdftex.def Info: bilstm.png  used on input line 62.
+Package pdftex.def Info: bilstm.png  used on input line 67.
 (pdftex.def)             Requested size: 260.16959pt x 140.38318pt.
 
-Overfull \hbox (23.03365pt too wide) in paragraph at lines 62--63
+Overfull \hbox (23.03365pt too wide) in paragraph at lines 67--68
  [][] 
  []
 
-<cnn.png, id=31, 658.8615pt x 301.125pt>
+<cnn.png, id=30, 658.8615pt x 301.125pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
-Package pdftex.def Info: cnn.png  used on input line 68.
+Package pdftex.def Info: cnn.png  used on input line 73.
 (pdftex.def)             Requested size: 428.2549pt x 195.72891pt.
-<cnnreduit.png, id=32, 554.67226pt x 302.3295pt>
+<cnnreduit.png, id=31, 554.67226pt x 302.3295pt>
 File: cnnreduit.png Graphic file (type png)
 <use cnnreduit.png>
-Package pdftex.def Info: cnnreduit.png  used on input line 74.
+Package pdftex.def Info: cnnreduit.png  used on input line 79.
 (pdftex.def)             Requested size: 249.6002pt x 136.04701pt.
 
-Overfull \hbox (12.46426pt too wide) in paragraph at lines 74--75
+Overfull \hbox (12.46426pt too wide) in paragraph at lines 79--80
  [][] 
  []
 
@@ -446,34 +446,43 @@ Overfull \hbox (12.46426pt too wide) in paragraph at lines 74--75
 \openout3 = `Project_report.brf'.
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 118.
- [4
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 118.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 123.
+ [4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 123.
  (./Project_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 118.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 118.
-Package rerunfilecheck Info: File `Project_report.brf' has not changed.
-(rerunfilecheck)             Checksum: BFD5B8D21B54C725652685EB61CE6175;809.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 123.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 123.
+
+
+Package rerunfilecheck Warning: File `Project_report.brf' has changed.
+(rerunfilecheck)                Rerun to get bibliographical references right.
+
+Package rerunfilecheck Info: Checksums for `Project_report.brf':
+(rerunfilecheck)             Before: 7F4E3D8EC31900384E3AC80437C4C11B;975
+(rerunfilecheck)             After:  64D9A07C474A48E7FBC4E9469FD2A79A;915.
  ) 
 Here is how much of TeX's memory you used:
- 7409 strings out of 480906
- 107558 string characters out of 5910771
- 384012 words of memory out of 5000000
- 22812 multiletter control sequences out of 15000+600000
- 556277 words of font info for 70 fonts, out of 8000000 for 9000
+ 7431 strings out of 480906
+ 107808 string characters out of 5910771
+ 384072 words of memory out of 5000000
+ 22830 multiletter control sequences out of 15000+600000
+ 557976 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,9n,45p,1255b,348s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,9n,45p,1253b,348s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
-pfb>
-Output written on Project_report.pdf (4 pages, 190992 bytes).
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Project_report.pdf (4 pages, 241245 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 500000)
+ 149 PDF objects out of 1000 (max. 8388607)
+ 128 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

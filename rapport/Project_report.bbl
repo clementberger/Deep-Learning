@@ -39,6 +39,17 @@ A. Mesaros, Toni Heittola, and T. Virtanen.
 \newblock Metrics for polyphonic sound event detection.
 \newblock {\em Applied Sciences}, 6:162, 2016.
 
+\bibitem{spectrogram}
+Jordi Pons, Olga Slizovskaia, Rong Gong, Emilia G{\'{o}}mez, and Xavier Serra.
+\newblock Timbre analysis of music audio signals with convolutional neural
+  networks.
+\newblock {\em CoRR}, abs/1703.06697, 2017.
+
+\bibitem{mel}
+E.~B.~Newman S.~S.~Stevens, J.~Volkmann.
+\newblock A scale for the measurement of the psychological magnitude pitch.
+\newblock {\em Acoust. Soc. Am.}, 8, 1937.
+
 \bibitem{data_aug}
 Jan Schlüter and Thomas Grill.
 \newblock Exploring data augmentation for improved singing voice detection with
