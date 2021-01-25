@@ -125,14 +125,14 @@ The next issue was that the VGGish network had been trained with spectrograms, m
 	\item \textbf{conv4} : a 32-filter convolutional layer followed by a dropout
 	\item our \textbf{BiLSTM + attention} structure
 \end{itemize}
-All convolutional layers have a 3x3 kernel. This architecture is represented in figure \ref{cnn}.
+All convolutional layers have a 3x3 kernel. This architecture is represented in figure \ref{cnn}. We will refer to it as the CNN architecture.
 \begin{figure*}
 	\centering
 	\includegraphics[scale = 0.65]{cnn.png}
 	\caption{Convolutional network taking scalograms}
 	\label{cnn}
 \end{figure*}
-As we had to reduce the resolution, we wondered if such a deep network was necessary. To test this, we also tried the same structure without the \textbf{conv3} and \textbf{conv4} layers (see \ref{reduit}).
+As we had to reduce the resolution, we wondered if such a deep network was necessary. To test this, we also tried the same structure without the \textbf{conv3} and \textbf{conv4} layers (see \ref{reduit}). We will refer to it as the CNN-reduced architecture.
 \begin{figure}
 	\centering
 	\includegraphics[scale = 0.45]{cnnreduit.png}
@@ -140,7 +140,13 @@ As we had to reduce the resolution, we wondered if such a deep network was neces
 	\label{reduit}
 \end{figure}
 \subsection{Data augmentation}
-Our last step is to see the effect of data augmentation techniques, as suggested in \cite{squelette_progr}. The first technique we use is the interpolation described earlier. We also try to add a Gaussian noise as in \cite{data_aug}.
+Our last step is to see the effect of data augmentation techniques, as suggested in \cite{squelette_progr}. 
+
+A difficulty is that due to our limited computational power, we have to use precalculated scalograms/spectrograms. Thus the transformations we use have to be easily applied to the representations directly without too much calculations.
+
+The first technique we use is the interpolation described earlier, as \cite{squelette_progr}. We also try to add a Gaussian noise as in \cite{data_aug}. Finally, as we have an image as representation of our signal, we thought we could use some techniques coming from the computer vision field. It appeared that due to the form of our representations, a horizontal flip of the image exactly corresponds to playing the audio backward, and thus we use this as our last data augmentation technique. 
+
+We try to use them independently and then altogether. We make these tests both on the Mel architecture and the CNN architecture.
 \begin{figure}
 	\centering
 	\includegraphics[scale = 0.5]{to_ref.png}
