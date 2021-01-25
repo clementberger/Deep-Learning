@@ -38,7 +38,7 @@
 
 \maketitle
 \begin{abstract}
-	While single-instrument recognition has made tremendous progress, multi-instrument recognition is still considered as a hard task. A part of the difficulty comes from the lack of huge strongly labeled datasets. Recently, a large dataset of polyphonic audio clips called OpenMIC has been released. The drawback of the size of the dataset is that it is only weakly-labeled. Previous works have proposed to use an attention mechanism and a Recurrent Neural Network structure called Bidirectional Long-Short Term Memory (BiLSTM) to train on this dataset. Most works in this field use Log-Mel Spectrograms to treat the audio signal before giving it to the network. Here we explore the use of Analytic Wavelet Transform (AWT) to generate scalograms wich are then given to a Convolutional Neural Network (CNN). Such transformations are supposed to be more efficient in giving a representation of the whole signal. We also test different BiLSTM configurations and try some data augmentation techniques. While we do not improve state of the art, our results are encouraging. With more computational power, pretraining our scalogram-CNN structure as feature extractor using a big dataset like YouTube should be able to achieve great results.
+	While single-instrument recognition has made tremendous progress, multi-instrument recognition is still considered as a hard task. A part of the difficulty comes from the lack of huge strongly labeled datasets. Recently, a large dataset of polyphonic audio clips called OpenMIC has been released. The drawback of the size of the dataset is that it is only weakly-labeled. Previous works have proposed to use an attention mechanism and a Recurrent Neural Network structure called Bidirectional Long-Short Term Memory (BiLSTM) to train on this dataset. Most works in this field use Log-Mel Spectrograms to treat the audio signal before giving it to the network. Here we explore the use of Analytic Wavelet Transform (AWT) to generate scalograms wich are then given to a Convolutional Neural Network (CNN). Such transformations are supposed to be more efficient in giving a representation of the whole signal. We also test different BiLSTM configurations and try some data augmentation techniques. While we do not improve state-of-the-art, our results are encouraging. With more computational power, pretraining our scalogram-CNN structure as feature extractor using a big dataset like YouTube should be able to achieve great results.
 \end{abstract}
 \section{Introduction}
 \subsection{Motivation}
@@ -80,7 +80,7 @@ where $h(x)$ is the output of the embedding layer, $v$ is a vector to be learned
 \subsection{Using a BiLSTM architecture}
 In 2020, Amir Kenarsari-Anhari \cite{squelette_progr} built upon these works to improve the efficiency of the network introduced in the previous section. His idea was to use Recurrent Neural Networks (RNN) to better exploit the fact that the different vectors of features correspond to different seconds of the audio clip (as explained in the Section 1.2.1). In particular, he used a BiLSTM structure. An LSTM is a particular structure of RNN built especially to improve the ability of the network to pass information through time, which has proved its efficiency in Natural Language Processing or to study Time Series (see \cite{lstm} for a complete description). It is here set to be bidirectional in the sense that it treats the data by following its direction as well as reversing it.
 
-Practically, the BiLSTM replaced the embedding and prediction layers used by Gurarani \etal to be coupled with the attention mechanism. The resulting architecture, presented in figure \ref{mel}, improved the efficiency of the model and will be considered as the state of the art for us. 
+Practically, the BiLSTM replaced the embedding and prediction layers used by Gurarani \etal to be coupled with the attention mechanism. The resulting architecture, presented in figure \ref{mel}, improved the efficiency of the model and will be considered as the state-of-the-art for us. 
 \begin{figure}
 	\centering
 	\includegraphics[scale = 0.45]{bilstm.png}
@@ -101,7 +101,7 @@ Zhang \etal \cite{interpol} experimented interpolation between different samples
 \[l_z = \lambda l_x+(1-\lambda)l_y\]
 \section{Methodology}
 \subsection{BiLSTM}
-As said earlier, we consider \cite{squelette_progr} as our state of the art. It has to be noted that the article does not provide all the details necessaery to reproduce the exact same architecture, neither their code. Thus our first step is to try to reproduce their result, using an architecture corresponding to \ref{mel}.
+As said earlier, we consider \cite{squelette_progr} as our state-of-the-art. It has to be noted that the article does not provide all the details necessaery to reproduce the exact same architecture, neither their code. Thus our first step is to try to reproduce their result, using an architecture corresponding to \ref{mel}.
 \begin{enumerate}
 	\item First, we get the features of the VGGish model furnished by the OpenMIC website.
 	\item Then our network is divided into two parts :
@@ -113,6 +113,12 @@ As said earlier, we consider \cite{squelette_progr} as our state of the art. It 
 \end{enumerate}
 The best of these networks (for 1 layer, as discussed later in Section 4.) gives us our benchmark before trying other techniques. We will from now on refer to this architecture as the Mel architecture.
 \subsection{Spectrograms}
+\begin{figure*}
+	\centering
+	\includegraphics[scale = 0.65]{cnn.png}
+	\caption{Convolutional network taking scalograms}
+	\label{cnn}
+\end{figure*}
 Next, we want to see if the AWT and spectrograms used by Dutta \etal can be transposed to the multi-instrument recognition. Indeed, the reasoning behind it is independent of the number of predictions we want to make and thus is still relevant in our case. 
 
 Thus for this part, we take the raw audio sample of OpenMIC. We then compute their scalograms using a Morse wavelet. Here we are challenged by our lack of computational powerand memory. Indeed, to be able to train on our computers and even to be able to compute all scalograms in a reasonable amount of time, we had to reduce the resolution of the scalograms to 128x128. Hence we expect a loss of performance due to our imprecision (this has to be compared with the VGGish features which have already been calculated for us !).
@@ -126,12 +132,6 @@ The next issue was that the VGGish network had been trained with spectrograms, m
 	\item our \textbf{BiLSTM + attention} structure
 \end{itemize}
 All convolutional layers have a 3x3 kernel. This architecture is represented in figure \ref{cnn}. We will refer to it as the CNN architecture.
-\begin{figure*}
-	\centering
-	\includegraphics[scale = 0.65]{cnn.png}
-	\caption{Convolutional network taking scalograms}
-	\label{cnn}
-\end{figure*}
 As we had to reduce the resolution, we wondered if such a deep network was necessary. To test this, we also tried the same structure without the \textbf{conv3} and \textbf{conv4} layers (see \ref{reduit}). We will refer to it as the CNN-reduced architecture.
 \begin{figure}
 	\centering
@@ -147,12 +147,23 @@ A difficulty is that due to our limited computational power, we have to use prec
 The first technique we use is the interpolation described earlier, as \cite{squelette_progr}. We also try to add a Gaussian noise as in \cite{data_aug}. Finally, as we have an image as representation of our signal, we thought we could use some techniques coming from the computer vision field. It appeared that due to the form of our representations, a horizontal flip of the image exactly corresponds to playing the audio backward, and thus we use this as our last data augmentation technique. 
 
 We try to use them independently and then altogether. We make these tests both on the Mel architecture and the CNN architecture.
+\section{Evaluation}
+\subsection{BiLSTM}
+Our complete code can be found \href{https://github.com/clementberger/Deep-Learning.git}{here}. Part of it has been taken from the code of Gururani \etal \cite{attention}. The dropout rate for the BiLSTM has been set to 0.2 as in \cite{squelette_progr}. We try to set the number of BiLSTM layers to 1 and 3. This part has be done without any form of data augmentation.
 \begin{figure}
 	\centering
 	\includegraphics[scale = 0.5]{to_ref.png}
-	\caption{Comparison of the instrument-level F1-score between our different Mel architectures and state of the art (denoted by \textit{reference}), with no data augmentation.}
+	\caption{Comparison of the instrument-level F1-score between our different Mel architectures and state-of-the-art (denoted by \textit{reference}), with no data augmentation.}
 	\label{to_ref}
 \end{figure}
+The results are sumed up in \ref{to_ref}. We gave the F1-score of our model after 200 epochs, for each instrument. For the test set and train set split, we followed the split given by OpenMIC which ensures its relevance (in terms of representation of each instrument for example).
+
+Our results are pretty closed to state-of-the-art. Depending on the instrument, the 1-layer version of the Mel architecture can be a bit better (clarinet, banjo, accordion, flute..) or a bit less good (trumpet, violin) than \cite{squelette_progr}. We deduce that this is probably the almost same structure that is used in this paper.
+
+However we note a worse performance for the 3-layer version, especially for the violin. Taking into account the fact that the VGGish model already extracts high level features thanks to its pretrain and well designed structure, a deeper network after it may not be necessary and may create more confusion than help. So from now on all BiLSTM structures will be done using only 1 layer.
+\subsection{Spectrograms}
+\subsection{Data augmentation}
+
 \begin{figure}
 	\centering
 	\includegraphics[scale = 0.5]{cnn_plot.png}
@@ -171,7 +182,7 @@ We try to use them independently and then altogether. We make these tests both o
 	\caption{Comparison of the instrument-level F1-score between our different data augmentation strategies for the CNN structure.}
 	\label{cnn_data}
 \end{figure}
-\section{Evaluation}
+\section{Conclusion}
 
 {\small
 	\bibliographystyle{ieee_fullname}
