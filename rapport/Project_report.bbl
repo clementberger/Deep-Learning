@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}\itemsep=-1pt
+\begin{thebibliography}{10}\itemsep=-1pt
 
 \bibitem{squelette_progr}
 Amir Anhari.
@@ -28,6 +28,11 @@ S. {Hershey}, S. {Chaudhuri}, D.~P.~W. {Ellis}, J.~F. {Gemmeke}, A. {Jansen},
 Eric~J. Humphrey, S. Durand, and B. McFee.
 \newblock Openmic-2018: An open data-set for multiple instrument recognition.
 \newblock In {\em ISMIR}, 2018.
+
+\bibitem{vgg}
+A.~Zisserman K.~Simonyan.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock {\em ArXiv}, September 2014.
 
 \bibitem{metric}
 A. Mesaros, Toni Heittola, and T. Virtanen.
